@@ -11,8 +11,12 @@ import {nanoid } from "nanoid"
 function App() {
 
 const [allDice, setAllDice] = React.useState(allNewDice())
+const [tenzies, setTenzies] = React.useState(false)
 
+React.useEffect(()=>{
+  console.log("tugba")
 
+},[allDice])
 function allNewDice(){
     const newDice=[];
     for(let i=0; i<10; i++){
