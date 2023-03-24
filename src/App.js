@@ -22,11 +22,10 @@ React.useEffect(()=>{
     setTenzies(true)
     console.log("You won")
   }
-  
-
-
-},[allDice])
+},
+[allDice])
 function allNewDice(){
+  
     const newDice=[];
     for(let i=0; i<10; i++){
         newDice.push ({
@@ -35,20 +34,31 @@ function allNewDice(){
           id: nanoid()
         })
     }
+    
     return newDice
 }
 
 function generateNewDice(){
-  setAllDice(oldDice=>{
-    return oldDice.map(dice=>{
-     return dice.isHeld === true ?  dice :
-      {
-          value: Math.round(Math.random(6)*6),
-          isHeld: false,
-          id: nanoid()
-        }
+  if(tenzies){
+      setAllDice(allNewDice())
+      setTenzies(false)
+  }
+  else{
+  
+    setAllDice(oldDice=>{
+      return oldDice.map(dice=>{
+      return dice.isHeld === true ?  dice :
+        {
+            value: Math.round(Math.random(6)*6),
+            isHeld: false,
+            id: nanoid()
+          }
+      })
     })
-  })
+  }
+    
+  
+  
 }
 
 function holdDice(id){
