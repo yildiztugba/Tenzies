@@ -18,7 +18,7 @@ function allNewDice(){
     for(let i=0; i<10; i++){
         newDice.push ({
           value: Math.round(Math.random(6)*6),
-          isHeld: true,
+          isHeld: false,
           id: nanoid()
         })
     }
@@ -30,7 +30,11 @@ function generateNewDice(){
 }
 
 function holdDice(id){
-console.log(id)
+setAllDice((oldDice)=>{
+return oldDice.map((dice)=>{
+  return dice.id===id ? {...dice, isHeld: !dice.isHeld } : dice
+    })
+  })
 }
 
 const diceElement = allDice.map(dice=>{
