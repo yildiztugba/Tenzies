@@ -4,6 +4,8 @@ import React from "react"
 import ReactDom from "react-dom"
 import Die from "./Die"
 
+
+
 function allNewDice(){
     const newDice=[];
     for(let i=0; i<10; i++){
@@ -14,23 +16,17 @@ function allNewDice(){
 
 
 function App() {
+const [allDice, setAllDice] = React.useState(allNewDice)
 
+const diceElement =allDice.map(dice=>{
+          return <Die value={dice} />})
   return (
-   <main>
+  <main>
       
     <div className="dice-container">
-                <Die value="1" />
-                <Die value="2" />
-                <Die value="3" />
-                <Die value="4" />
-                <Die value="5" />
-                <Die value="6" />
-                <Die value="1" />
-                <Die value="1" />
-                <Die value="1" />
-                <Die value="1" />
-            </div>
-   </main>
+      {diceElement}
+      </div>
+  </main>
   );
 }
 
