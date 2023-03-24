@@ -26,6 +26,7 @@ const diceElement =allDice.map(dice=>{
     <div className="dice-container">
       {diceElement}
       </div>
+      <button>Roll</button>
   </main>
   );
 }
