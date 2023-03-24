@@ -26,7 +26,16 @@ function allNewDice(){
 }
 
 function generateNewDice(){
-  setAllDice(allNewDice())
+  setAllDice(oldDice=>{
+    return oldDice.map(dice=>{
+     return dice.isHeld === true ?  dice :
+      {
+          value: Math.round(Math.random(6)*6),
+          isHeld: false,
+          id: nanoid()
+        }
+    })
+  })
 }
 
 function holdDice(id){
