@@ -14,7 +14,16 @@ const [allDice, setAllDice] = React.useState(allNewDice())
 const [tenzies, setTenzies] = React.useState(false)
 
 React.useEffect(()=>{
-  console.log("tugba")
+  const allDiceHeld= allDice.every(dice=>dice.isHeld === true)
+  const firstValue= allDice[0].value
+  const allSameValue = allDice.every(dice=>dice.value === firstValue) 
+
+  if(allDiceHeld && allSameValue){
+    setTenzies(true)
+    console.log("You won")
+  }
+  setTenzies(true)
+
 
 },[allDice])
 function allNewDice(){
