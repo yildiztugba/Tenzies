@@ -6,6 +6,13 @@ import Die from "./Die"
 
 
 
+
+
+function App() {
+
+const [allDice, setAllDice] = React.useState(allNewDice())
+
+
 function allNewDice(){
     const newDice=[];
     for(let i=0; i<10; i++){
@@ -14,19 +21,22 @@ function allNewDice(){
     return newDice
 }
 
+function generateNewDice(){
+  setAllDice(allNewDice())
+}
 
-function App() {
-const [allDice, setAllDice] = React.useState(allNewDice)
 
-const diceElement =allDice.map(dice=>{
+const diceElement = allDice.map(dice=>{
           return <Die value={dice} />})
+
   return (
   <main>
-      
     <div className="dice-container">
       {diceElement}
       </div>
-      <button>Roll</button>
+      <button
+      onClick={generateNewDice} >
+        Roll</button>
   </main>
   );
 }
