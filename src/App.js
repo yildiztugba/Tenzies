@@ -29,9 +29,12 @@ function generateNewDice(){
   setAllDice(allNewDice())
 }
 
+function holdDice(id){
+console.log(id)
+}
 
 const diceElement = allDice.map(dice=>{
-          return <Die value={dice.value} isHeld={dice.isHeld} />})
+          return <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} holdDice={()=>holdDice(dice.id)}/>})
 
   return (
   <main>
