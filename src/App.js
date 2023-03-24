@@ -18,7 +18,7 @@ function allNewDice(){
     for(let i=0; i<10; i++){
         newDice.push ({
           value: Math.round(Math.random(6)*6),
-          isHeld: false,
+          isHeld: true,
           id: nanoid()
         })
     }
@@ -31,7 +31,7 @@ function generateNewDice(){
 
 
 const diceElement = allDice.map(dice=>{
-          return <Die value={dice.value} />})
+          return <Die value={dice.value} isHeld={dice.isHeld} />})
 
   return (
   <main>
