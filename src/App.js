@@ -4,7 +4,7 @@ import React from "react"
 import ReactDom from "react-dom"
 import Die from "./Die"
 import {nanoid } from "nanoid"
-
+import Confetti from "react-confetti"
 
 
 
@@ -22,7 +22,7 @@ React.useEffect(()=>{
     setTenzies(true)
     console.log("You won")
   }
-  setTenzies(true)
+  
 
 
 },[allDice])
@@ -63,7 +63,9 @@ const diceElement = allDice.map(dice=>{
           return <Die key={dice.id} value={dice.value} isHeld={dice.isHeld} holdDice={()=>holdDice(dice.id)}/>})
 
   return (
+    
   <main>
+  {tenzies && <Confetti/>} 
     <h1 className="title">Tenzies</h1>
             <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
     <div className="dice-container">
@@ -71,8 +73,8 @@ const diceElement = allDice.map(dice=>{
       </div>
       <button
       className="roll-dice"
-      onClick={generateNewDice} >
-        Roll</button>
+      onClick={generateNewDice} >{tenzies ? "New game" : "Roll"}
+        </button>
   </main>
   );
 }
