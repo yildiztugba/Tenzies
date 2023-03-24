@@ -3,7 +3,7 @@ import './App.css';
 import React from "react"
 import ReactDom from "react-dom"
 import Die from "./Die"
-
+import {nanoid } from "nanoid"
 
 
 
@@ -18,7 +18,8 @@ function allNewDice(){
     for(let i=0; i<10; i++){
         newDice.push ({
           value: Math.round(Math.random(6)*6),
-          isHeld: false
+          isHeld: false,
+          id: nanoid()
         })
     }
     return newDice
