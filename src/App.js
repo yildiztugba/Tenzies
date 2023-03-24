@@ -35,6 +35,7 @@ const diceElement = allDice.map(dice=>{
       {diceElement}
       </div>
       <button
+      className="roll-dice"
       onClick={generateNewDice} >
         Roll</button>
   </main>
